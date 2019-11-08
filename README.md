@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-10-15 09:01:30
- * @LastEditTime: 2019-11-08 14:10:21
+ * @LastEditTime: 2019-11-08 14:44:10
  * @LastEditors: jiannan.lv
  -->
 
@@ -77,7 +77,7 @@
 ## 打包命令
 
 ```
-    npm run build
+    npm run deploy:prod
 ```
 
 ## 访问地址

@@ -2,7 +2,7 @@
  * @Description:
  * @Author: jiannan.lv
  * @Date: 2019-05-09 11:11:47
- * @LastEditTime: 2019-10-17 13:58:12
+ * @LastEditTime: 2019-11-08 15:06:06
  * @LastEditors: jiannan.lv
  */
 const configs = require('./product.config');
@@ -13,6 +13,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const VendorsJson = require('./vendors-manifest.json');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // ----------------------------------
 // get dev || pro Configuration
@@ -193,7 +194,9 @@ const plugins = [
         chunkFilename: `${DIR_DIST_CSS}/[id].min.[chunkhash:5].css`
     }),
     // 作用域提升
-    new webpack.optimize.ModuleConcatenationPlugin() /* ,
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new VueLoaderPlugin()
+    /* ,
     new webpack.optimize.UglifyJsPlugin({
         // 最紧凑的输出
         beautify: false,
