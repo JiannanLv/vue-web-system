@@ -1,0 +1,111 @@
+/*
+ * @Description: 
+ * @Author: jiannan.lv
+ * @Date: 2019-06-27 19:50:25
+*@LastEditTime: 2019-10-30 14:00:19
+*@LastEditors: jiannan.lv
+ */
+.drag-item {
+  // border: 1px solid #ccc;
+  cursor: pointer;
+  position: absolute;
+  > img {
+    height: 100%;
+    width: 100%;
+  }
+  .icon-wrap {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  i {
+    background: #eef2f5;
+    display: none;
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 1px solid orange;
+    z-index: 2;
+
+    &.leftTop {
+      cursor: se-resize;
+      left: -4px;
+      top: -4px;
+    }
+
+    &.centerTop {
+      left: calc(50% - 4px);
+      top: -4px;
+      cursor: ns-resize;
+    }
+
+    &.rightTop {
+      cursor: ne-resize;
+      right: -4px;
+      top: -4px;
+    }
+
+    &.leftCenter {
+      cursor: ew-resize;
+      left: -4px;
+      top: calc(50% - 4px);
+    }
+
+    &.leftBottom {
+      cursor: ne-resize;
+      bottom: -4px;
+      left: -4px;
+    }
+
+    &.rightCenter {
+      cursor: ew-resize;
+      right: -4px;
+      top: calc(50% - 4px);
+    }
+
+    &.centerBottom {
+      cursor: ns-resize;
+      bottom: -4px;
+      left: calc(50% - 4px);
+    }
+
+    &.rightBottom {
+      cursor: se-resize;
+      bottom: -4px;
+      right: -4px;
+    }
+
+    &.lineIcon {
+      border: 2px solid #007acc;
+      border-radius: 50%;
+      cursor: crosshair;
+      height: 10px;
+      width: 10px;
+    }
+
+    &.left {
+      left: -8px;
+      top: calc(50% - 4px);
+    }
+
+    &.top {
+      display: none;
+      left: calc(50% - 4px);
+      top: -8px;
+    }
+
+    &.right {
+      right: -8px;
+      top: calc(50% - 4px);
+    }
+
+    &.bottom {
+      bottom: -8px;
+      display: none;
+      left: calc(50% - 4px);
+    }
+  }
+}
