@@ -19,15 +19,15 @@
                 refY="4"
                 orient="auto">
           <path d="M0,0 L8,4 L0,8 z"
-                style="fill: rgba(154, 201, 244, 0.5);" />
+                style="fill: rgba(154, 201, 244, 1);" />
         </marker>
       </defs>
       <path v-for="(c, i) in connects"
             :key="i"
             :d="c.d"
             fill="none"
-            :stroke="'rgba(154, 201, 244, 0.5)'"
-            :stroke-width="1"
+            :stroke="'rgba(154, 201, 244, 1)'"
+            :stroke-width="1.5"
             marker-end="url(#markerArrow)"></path>
     </svg>
   </div>

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-10-17 14:55:27
- * @LastEditTime: 2019-10-28 11:45:25
+ * @LastEditTime: 2019-11-20 13:50:59
  * @LastEditors: jiannan.lv
  -->
 <template>
@@ -116,7 +116,7 @@
     methods: {
       // 获取列表
       getUserList () {
-        const { page, pageSize } = this.pageInfo;
+        const { page, pageSize, total } = this.pageInfo;
         const key = this.searchValue;
         getUserListApi({ page, pageSize, key })
           .then(res => {
@@ -163,10 +163,13 @@
       },
       // 删除用户
       handleDelete (id) {
+        const { page, pageSize, total } = this.pageInfo;
+        const curPage = (pageSize * (page - 1) + 1) === total && total !== 0 ? page - 1 : page;
         const params = { id };
         deleteUserApi(params)
           .then(res => {
             this.$Message.info(res);
+            this.pageInfo.page = curPage;
             this.getUserList();
           })
           .catch(error => {
