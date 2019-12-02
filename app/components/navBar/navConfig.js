@@ -2,7 +2,7 @@
  * @Description:
  * @Author: jiannan.lv
  * @Date: 2019-05-14 15:34:45
- * @LastEditTime: 2019-11-26 19:27:54
+ * @LastEditTime: 2019-11-29 14:51:07
  * @LastEditors: jiannan.lv
  */
 const navConfig = [
@@ -38,14 +38,19 @@ const navConfig = [
     extend: false,
     children: [
       {
-        icon: 'iconfont icondrag',
+        icon: 'iconfont iconparticle',
         path: '/particleAnimator',
         name: '粒子动画'
       },
       {
-        icon: 'iconfont icondrag',
+        icon: 'iconfont iconrain',
         path: '/rain',
-        name: '下雨'
+        name: '下雨动画'
+      },
+      {
+        icon: 'iconfont iconclock',
+        path: '/clock',
+        name: '粒子时钟'
       }
     ]
   }

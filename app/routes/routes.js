@@ -94,6 +94,15 @@ const appRouter = [
             meta: {
               name: '下雨'
             }
+          },
+          {
+            path: '/clock',
+            name: 'clock',
+            component: () =>
+              import('app/containers/Canvas/particleClock/particleClock.vue'),
+            meta: {
+              name: '粒子时钟'
+            }
           }
         ]
       }
