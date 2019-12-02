@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-29 14:20:27
- * @LastEditTime: 2019-12-02 16:17:07
+ * @LastEditTime: 2019-12-02 17:06:28
  * @LastEditors: jiannan.lv
  -->
 <template>
@@ -55,8 +55,8 @@
         if (this.canvas === null || !this.canvas.getContext) {
           return;
         }
-        this.ctx = this.canvas.getContext("2d");
         this.setDimensions();
+        this.ctx = this.canvas.getContext("2d");
         for (let i = 0; i < this.PARTICLE_NUM; i++) {
           this.particles[i] = this.makeParticle();
         }
@@ -70,7 +70,7 @@
        * @return: 
        */
       setDimensions () {
-        this.width = Math.max(window.innerWidth, this.MIN_WIDTH);
+        this.width = Math.max(window.innerWidth - 250, this.MIN_WIDTH);
         this.height = Math.max(window.innerHeight, this.MIN_HEIGHT);
         this.canvas.width = this.width;
         this.canvas.height = this.height;
@@ -147,7 +147,6 @@
         this.ctx.clearRect(0, 0, this.width, this.height);
 
         const time = this.getTime(true);
-        this.textSize = 140;
 
         // draw text on canvas
         const color = time.hours + time.minutes + time.seconds;
@@ -157,7 +156,7 @@
         this.ctx.fillStyle = "rgb(255, 255, 255)";
         this.ctx.textBaseline = "middle";
         this.ctx.font = `${this.textSize}px Avenir`;
-        this.ctx.fillText(text, (this.width - this.ctx.measureText(text).width) * 0.5, this.height * 0.5);
+        this.ctx.fillText(text, (this.width - this.ctx.measureText(text).width) * 0.65, this.height * 0.5);
 
         // copy pixels
         const imgData = this.ctx.getImageData(0, 0, this.width, this.height);

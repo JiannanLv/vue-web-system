@@ -2,13 +2,14 @@
  * @Description: 
  * @Author: jiannan.lv
  * @Date: 2019-11-15 17:04:03
- * @LastEditTime: 2019-11-26 17:38:16
+ * @LastEditTime: 2019-12-02 18:13:34
  * @LastEditors: jiannan.lv
  -->
 <template>
   <div class="canvas1">
     <canvas class="canvas"
-            ref="canvas" />
+            ref="canvas"
+            @mousemove="mouseMove($event)" />
   </div>
 </template>
 
@@ -22,7 +23,17 @@
         ctx: '',
         w: 0,
         h: 0,
-        points: []
+        points: [],
+        timer: '',
+        mPoint: {
+          isStart: false,
+          x: 0,
+          y: 0,
+          xa: 2 * Math.random() - 1,
+          ya: 2 * Math.random() - 1,
+          max: 100,
+          color: '#ffffff',
+        }
       };
     },
     mounted () {
@@ -121,7 +132,8 @@
        * @return: 
        */
       drawPoints () {
-        const points = [...this.points];
+        // mPoint.isStart ? [mPoint] : []
+        const points = [...this.points.concat(this.mPoint.isStart ? [this.mPoint] : [])];
         this.ctx.clearRect(0, 0, this.w, this.h) //清空画布
         for (let i = 0; i < points.length; i++) {
           this.pointMove(points[i]);
@@ -139,6 +151,25 @@
       loop () {
         requestAnimationFrame(this.loop)
         this.drawPoints()
+      },
+      /**
+       * @description: 鼠标拖拽画点
+       * @param : 
+       * @return: 
+       */
+      mouseMove (e) {
+        const event = e || window.event;
+        const ox = e.offsetX;
+        const oy = e.offsetY;
+        this.mPoint = Object.assign({}, { ...this.mPoint }, {
+          isStart: true,
+          x: ox,
+          y: oy,
+        });
+        if (this.timer) clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          this.mPoint.isStart = false;
+        }, 10000);
       }
     }
   }
